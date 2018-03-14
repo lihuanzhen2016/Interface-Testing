@@ -1,4 +1,4 @@
-package com.corp.apitest.check.util;
+package com.apitest.check.util;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,17 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import com.corp.apitest.core.BaseTest;
-import com.corp.apitest.log.TestErrorLog;
-import com.corp.apitest.log.TestLog;
+import com.apitest.core.BaseTest;
+
+
 
 
 
 public class DbHelper {
-	public static Logger log = TestLog.getLog();
-	public static Logger wflog = TestErrorLog.getLog();
+	static Logger log = LogManager.getLogger(DbHelper.class.getName());
 	
 	public java.sql.Connection conn = null; //connection object
 	public ResultSet rs = null; //resultset object
@@ -143,7 +143,7 @@ public class DbHelper {
 	public static void main(String args[]) {
 		DbHelper db = DbHelper.getInstance();
 		try {
-			List list = db.query("select * from std_data.users where u_email = 'ea12@dev2.stardeals.info'");
+			List list = db.query("select * from fun ");
 			for (int i = 0; i < list.size(); i++) {
 				HashMap map = (HashMap) list.get(i);
 				log.info(map.toString());
